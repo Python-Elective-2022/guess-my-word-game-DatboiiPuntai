@@ -147,7 +147,7 @@ def game_loop(secret_word):
             print("That's too many letters!:", end=" ")
         elif guess in letters_guessed:
             print("You've already guessed this letter:", end=" ")
-            
+
         else:
             # when a valid guess is given, append to the letters guessed list
             letters_guessed.append(guess)
@@ -158,17 +158,16 @@ def game_loop(secret_word):
                 # reduce numGuesses by 1 if incorrect
                 print("Incorrect!:", end=" ")
                 numGuesses -= 1
-        print(get_guessed_word(secret_word, letters_guessed))
+        print(get_guessed_word(secret_word, letters_guessed) + '\n')
 
         # checks win condition
         if is_word_guessed(secret_word, letters_guessed):
-          print('You win!')
-          return None
+            print('You win!')
+            break
     # if player runs out of guesses and leaves while loop
-    print('You Lose!')
-    print(f'The word was {secret_word}.')
-    return None
-      
+    if numGuesses < 1:
+        print('You Lose!')
+        print(f'The word was {secret_word}.')
 
 
 def main():
