@@ -73,16 +73,14 @@ def get_guessed_word(secret_word, letters_guessed):
     returns: string, comprised of letters and underscores that represents
       what letters in secret_word have been guessed so far.
     '''
-    # creates a list of '_'
-    return_string = list('_' * len(secret_word))
+    secret_list = list(secret_word)
 
-    # checks if guess c is in the secret word and replaces the index of return string with the guess c
-    for guess_c in letters_guessed:
-        for i in range(len(secret_word)):
-            if guess_c == secret_word[i]:
-                return_string[i] = guess_c
+    # checks if each letter has not been guessed and replaces with _
+    for i, c in enumerate(secret_list):
+        if c not in letters_guessed:
+            secret_list[i] = '_'
 
-    return ''.join(return_string)
+    return ' '.join(secret_list)
 
 
 # Testcases
